@@ -1,0 +1,2 @@
+The componentWillUnmount() method is used to perform cleanup tasks, such as clearing intervals, timeouts, or removing event listeners.
+clearInterval(this.timerID) ensures that the interval is stopped when the component is unmounted, preventing memory leaks and errors.
