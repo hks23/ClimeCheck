@@ -40,7 +40,7 @@ function Forcast(props) {
   };
 
   useEffect(() => {
-    search("Delhi");
+    search("Mumbai");
   }, []);
 
   const getAirQualityDescription = (aqi) => {

@@ -105,8 +105,6 @@ class Weather extends React.Component {
       main: data.weather[0].main,
       country: data.sys.country,
     });
-  
-
     // Fetch air quality data
     const airQuality_call = await fetch(
       `${process.env.REACT_APP_WEATHER_API_URL}air_pollution?lat=${lat}&lon=${lon}&APPID=${process.env.REACT_APP_WEATHER_API_KEY}`
@@ -176,8 +174,8 @@ class Weather extends React.Component {
                 </div>
                 <div className="current-date">{dateBuilder(new Date())}</div>
               </div>
-              <div className="temperature">
-                <p className="px-5">
+              <div className="temperature" id="fontStyle">
+                <p className="px-5 ">
                   {this.state.temperatureC}°<span>C</span>
                 </p>
             

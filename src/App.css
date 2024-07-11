@@ -219,10 +219,24 @@ h1 {
 
 .container {
   width: 70%;
-  height: 85vh;
+  height: 87vh;
   margin: 50px auto;
+  border-radius: 15px;
   background-color: rgba(0, 0, 0, 0.5);
+  animation: float 4s ease-in-out infinite;
+  box-shadow: 0 0 15px rgba(251, 168, 15, 0.834);
 }
+
+@keyframes float {
+  0%, 100% {
+      transform: translateY(0);
+  }
+  50% {
+      transform: translateY(-10px);
+  }
+  
+}
+
 
 .city {
   width: 60%;
@@ -237,6 +251,7 @@ h1 {
   min-height: 500px;
   position: relative;
   background-position-x: -30px;
+  
   
 }
 
@@ -280,6 +295,8 @@ div#txt {
   float: left;
   text-align: left;
   position: absolute;
+  font-family:  -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+  font-weight: bolder;
 }
 
 .temperature {
@@ -287,18 +304,22 @@ div#txt {
   float: right;
   position: relative;
   left: 10px;
+  
 }
 
 .temperature p {
-  font-family: "Raleway", sans-serif;
   font-size: 80px;
-  font-weight: 100;
+  font-weight: lighter;
   margin: 0 40px;
+  font-family: Impact, Haettenschweiler, 'Arial Narrow Bold', sans-serif;
+ 
 }
 
 .temperature p span {
   font-size: 50px;
-  font-weight: 200;
+  /* font-weight: 200; */
+  /* font-weight: bolder; */
+  font-family: Impact, Haettenschweiler, 'Arial Narrow Bold', sans-serif;
 }
 
 .forecast {
@@ -313,7 +334,7 @@ div#txt {
 }
 
 .today-weather h3 {
-  text-transform: capitalize;
+  text-transform:capitalize;
   font-size: 50px;
   color: #fff;
   width: 80%;
@@ -399,8 +420,7 @@ div#txt {
   h1 {
     font-size: 45px;
   }
-  /*--w3layouts--*/
-  /*--agileits--*/
+ 
 }
 
 @media screen and (max-width: 800px) {
@@ -687,3 +707,4 @@ div#txt {
   right: 20px;
   top: 1.5%;
 }
+
