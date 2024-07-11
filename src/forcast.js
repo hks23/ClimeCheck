@@ -11,16 +11,13 @@ function Forcast(props) {
 
   const search = (city) => {
     axios
-      .get(
-        `${process.env.REACT_APP_WEATHER_API_URL}weather?q=${
-          city !== "[object Object]" ? city : query
-        }&units=metric&APPID=${process.env.REACT_APP_WEATHER_API_KEY}`
-      )
+      .get(`${process.env.REACT_APP_WEATHER_API_URL}weather?q=${city !== "[object Object]" ? city : query}&units=metric&APPID=${process.env.REACT_APP_WEATHER_API_KEY}`)
       .then((response) => {
         setWeather(response.data);
         setQuery("");
         // Fetch air quality data after fetching weather data
         const { lat, lon } = response.data.coord;
+
         return axios.get(
           `${process.env.REACT_APP_WEATHER_API_URL}air_pollution?lat=${lat}&lon=${lon}&APPID=${process.env.REACT_APP_WEATHER_API_KEY}`
         );
@@ -108,6 +105,12 @@ function Forcast(props) {
                 Temperature{" "}
                 <span className="temp">
                   {Math.round(weather.main.temp)}°c ({weather.weather[0].main})
+                </span>
+              </li>
+              <li>
+                Feels like{" "}
+                <span className="temp">
+                  {Math.round(weather.main.feels_like)}°c ({weather.weather[0].main})
                 </span>
               </li>
               <li>

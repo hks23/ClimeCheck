@@ -42,6 +42,8 @@ class Weather extends React.Component {
     errorMessage: undefined,
     temperatureC: undefined,
     temperatureF: undefined,
+    feelsLikeC: undefined, 
+    feelsLikeF: undefined, 
     city: undefined,
     country: undefined,
     humidity: undefined,
@@ -97,6 +99,8 @@ class Weather extends React.Component {
       city: data.name,
       temperatureC: Math.round(data.main.temp),
       temperatureF: Math.round(data.main.temp * 1.8 + 32),
+      feelsLikeC: Math.round(data.main.feels_like),
+      feelsLikeF: Math.round(data.main.feels_like * 1.8 + 32),
       humidity: data.main.humidity,
       main: data.weather[0].main,
       country: data.sys.country,
@@ -148,6 +152,7 @@ class Weather extends React.Component {
     console.log(this.state.temperatureC)
     if (this.state.temperatureC) {
       return (
+        //right side area
         <React.Fragment>
           <div className="city">
             <div className="title">
@@ -175,6 +180,7 @@ class Weather extends React.Component {
                 <p className="px-5">
                   {this.state.temperatureC}°<span>C</span>
                 </p>
+            
               </div>
             </div>
           </div>
