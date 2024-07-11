@@ -1,5 +1,4 @@
 import React from "react";
-import apiKeys from "./apiKeys";
 import Clock from "react-live-clock";
 import Forcast from "./forcast.js";
 import loader from "./images/WeatherIcons.gif";
@@ -85,10 +84,11 @@ class Weather extends React.Component {
       navigator.geolocation.getCurrentPosition(resolve, reject, options);
     });
   };
+  
 
   getWeather = async (lat, lon) => {
     const api_call = await fetch(
-      `${apiKeys.base}weather?lat=${lat}&lon=${lon}&units=metric&APPID=${apiKeys.key}`
+      `${process.env.REACT_APP_WEATHER_API_URL}weather?lat=${lat}&lon=${lon}&units=metric&APPID=${process.env.REACT_APP_WEATHER_API_KEY}`
     );
     const data = await api_call.json();
     this.setState({
@@ -105,11 +105,12 @@ class Weather extends React.Component {
 
     // Fetch air quality data
     const airQuality_call = await fetch(
-      `${apiKeys.base}air_pollution?lat=${lat}&lon=${lon}&APPID=${apiKeys.key}`
+      `${process.env.REACT_APP_WEATHER_API_URL}air_pollution?lat=${lat}&lon=${lon}&APPID=${process.env.REACT_APP_WEATHER_API_KEY}`
     );
     const airQuality_data = await airQuality_call.json();
     this.setState({ airQuality: airQuality_data.list[0].main.aqi });
 
+    //switch case for weather icon
     switch (this.state.main) {
       case "Haze":
         this.setState({ icon: "CLEAR_DAY" });
@@ -144,6 +145,7 @@ class Weather extends React.Component {
   };
 
   render() {
+    console.log(this.state.temperatureC)
     if (this.state.temperatureC) {
       return (
         <React.Fragment>

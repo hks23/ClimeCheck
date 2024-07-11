@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from "react";
 import axios from "axios";
-import apiKeys from "./apiKeys";
 import ReactAnimatedWeather from "react-animated-weather";
+
 
 function Forcast(props) {
   const [query, setQuery] = useState("");
@@ -12,9 +12,9 @@ function Forcast(props) {
   const search = (city) => {
     axios
       .get(
-        `${apiKeys.base}weather?q=${
+        `${process.env.REACT_APP_WEATHER_API_URL}weather?q=${
           city !== "[object Object]" ? city : query
-        }&units=metric&APPID=${apiKeys.key}`
+        }&units=metric&APPID=${process.env.REACT_APP_WEATHER_API_KEY}`
       )
       .then((response) => {
         setWeather(response.data);
@@ -22,7 +22,7 @@ function Forcast(props) {
         // Fetch air quality data after fetching weather data
         const { lat, lon } = response.data.coord;
         return axios.get(
-          `${apiKeys.base}air_pollution?lat=${lat}&lon=${lon}&APPID=${apiKeys.key}`
+          `${process.env.REACT_APP_WEATHER_API_URL}air_pollution?lat=${lat}&lon=${lon}&APPID=${process.env.REACT_APP_WEATHER_API_KEY}`
         );
       })
       .then((response) => {
