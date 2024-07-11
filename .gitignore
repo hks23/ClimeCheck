@@ -1,3 +1,4 @@
 node_modules
 public/robots.txt
 src/apiKeys.js
+.env
